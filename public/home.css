@@ -1,0 +1,74 @@
+  body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: lightblue;
+    background-image: url("./images/background.png");
+    opacity: 95%;
+  }
+
+  #room-container {
+    background-color: #ffff99;
+    padding: 15px 15px 15px 25px;
+    margin-left: 30px;
+    border-radius: 15px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    width: 200px;
+    height: 200px;
+    font-size: 17px;
+    overflow: auto;
+    box-shadow: inset 0 0 10px #000000;
+  }
+
+  #create-button {
+    margin-left: 55px;
+    font-family: monospace;
+    margin-top: 6px;
+  }
+
+  .header {
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color: white;
+  }
+
+  #new-game {
+    margin-bottom: 0px;
+  }
+
+  #buttons {
+    background-color: lightblue;
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 10px;
+    font-size: 15px;
+    width: 200px;
+  }
+
+
+  #typebox {
+    border-radius: 5px;
+    height: 20px;
+    margin-left: 60px;
+    margin-top: 0px;
+  }
+
+  #title {
+    background-color: lightblue;
+    padding: 20px;
+    border-radius: 15px;
+    border-width: 5px;
+    border-color: white;
+    border-style: solid;
+    font-family: monospace;
+    width: 300px;
+    position: fixed;
+    top: 100px;
+    box-shadow: 5px 5px gray;
+  }
+
+  #scripts {
+    display: block;
+  }
