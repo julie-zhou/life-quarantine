@@ -16,7 +16,6 @@ const addCars = document.getElementById('add-cars');
 const close = document.getElementById('close');
 const roll = document.getElementById('roll');
 
-
 //import player colors
 const p1 = document.getElementById('r')
 const p2 = document.getElementById('b')
@@ -31,7 +30,6 @@ const card = document.getElementById('card');
 const lobby = document.getElementById('lobby');
 const gameInfo = document.getElementById('gamestuff');
 
-
 const first = document.getElementById('first-player');
 const second = document.getElementById('second-player');
 const third = document.getElementById('third-player');
@@ -43,8 +41,7 @@ const thirdMoney = document.getElementById('third-money');
 const fourthMoney = document.getElementById('fourth-money');
 
 
-
-
+// event card text
 var squares = [1, 4, 8, 10, 11, 13, 16, 19, 20, 24, 28, 30, 31, 33, 35, 36, 39, 41, 42, 45, 46, 
 48, 52, 54, 55, 57, 59, 63, 65, 66, 69, 72, 74, 75, 77, 80, 83, 84, 87, 89, 91, 92, 93, 98, 99, 101];
 var words = ['You try making the whipped coffee that has been trending on Tiktok +$10', 
@@ -96,6 +93,7 @@ var words = ['You try making the whipped coffee that has been trending on Tiktok
 var moneyValues = [10, 500, -200, 50, 0, -100, 80, -150, 200, -100, -100, 5, -5, 120, 200, 500, 
 30, -200, 100, -100, 200, 10, 400, 500, 100, 50, -10, -50, -200, 150, 50, 100, 150, -300, -40,
 80, 120, 50, -60, 150, -30, 200, 100, 150, -50, 200]
+
 
 //----------------------------------------------------------------------
 if (messageForm != null) {
@@ -168,11 +166,7 @@ if (messageForm != null) {
 	})
   }
   addCarListener();
-
 }
-
-
-
 
 
 //----------------------------------------------------------------------
@@ -245,17 +239,13 @@ socket.on('enable-button', num => {
 
 
 
-
-
 //----------------------------------------------------------------------
 class WaitingScene extends
     Phaser.Scene{
       constructor() {
         super({ key:'WaitingScene'})
       }
-
       preload() {}
-
       create() {
       	this.game.canvas.id = 'gamecanvas';
 
@@ -267,13 +257,8 @@ class WaitingScene extends
 			this.scene.start('StartScene');
 		})
       }
-
       update() {}
     }
-
-
-
-
 
 //----------------------------------------------------------------------
 class StartScene extends
@@ -290,7 +275,6 @@ class StartScene extends
             this.load.image(loadTiles[i][0], loadTiles[i][1], loadTiles[i][2])
         }
 
-
         const loadBuildings = [['bluehouse', './images/bluehouse.png'], ['brownhouse', './images/brownhouse.png'], 
         ['orangehouse', './images/orangehouse.png'], ['whitehouse', './images/whitehouse.png'], ['pinkhouse', './images/pinkhouse.png'],
         ['restaurant', './images/restaurant.png'], ['sheriff', './images/building1.png']]
@@ -298,7 +282,6 @@ class StartScene extends
         for (var i=0; i<loadBuildings.length; i++) {
             this.load.image(loadBuildings[i][0], loadBuildings[i][1], loadBuildings[i][2])
         }
-
 
         const loadNature = [['mount1', './images/mountains1.png'], ['mounty', './images/mounty.png'],
         ['tree', './images/treepic.png'], ['tree2', './images/tree2.png'], ['tree3', './images/tree3.png'],
@@ -311,7 +294,6 @@ class StartScene extends
         for (var i=0; i<loadNature.length; i++) {
             this.load.image(loadNature[i][0], loadNature[i][1], loadNature[i][2])
         }
-
 
         const loadCars = [['bluecar', './images/bluecar.png'], ['greencar', './images/greencar.png'],
         ['redcar', './images/redcar.png'], ['purplecar', './images/purplecar.png']]
@@ -357,7 +339,6 @@ class StartScene extends
 			this.add.image(this.tiles[i][0], this.tiles[i][1], this.tiles[i][2])
 		}
 
-
 		//adds mountains
 		const mountains = [[600, 50, 'mounty'], [1030, 50, 'mounty'], [370, 58, 'mount1'],
 		[815, 58, 'mount1'], [1170, 58, 'mount1']]
@@ -376,7 +357,7 @@ class StartScene extends
 			this.add.image(region1[i][0], region1[i][1], region1[i][2])
 		}
 
-	    //adds decor (region 2)
+	   	//adds decor (region 2)
 		const region2 =[[695, 200, 'orangehouse'], [695, 330, 'tree-2oval'], [663, 266, 'tree-spear'],
 		[700, 440, 'tree-2spears'], [672, 530, 'tree9'], [870, 400, 'pinkhouse'], [992, 270, 'restaurant'],
 		[1070, 490, 'sheriff'], [880, 500, 'tree7'], [880, 300, 'tree9'], [1080, 600, 'tree5'],
@@ -406,6 +387,7 @@ class StartScene extends
 			this.add.image(region4[i][0], region4[i][1], region4[i][2])
 		}
 
+	      
 //----------------------------------------------------------------------
 		
 		//adds cars depending on what was selected in the waiting room
@@ -488,11 +470,7 @@ class StartScene extends
 		})
 
 
-
-
-
-
-
+	  
 //----------------------------------------------------------------------
 		this.currentNum = 0;
 
@@ -511,7 +489,6 @@ class StartScene extends
 
 			//displays the number received
 			spinNum.innerText = num;
-
 	  	})
 
 
@@ -627,67 +604,64 @@ class StartScene extends
         		}
         	}
         })
-
-
-
 	}
 
 
 	//function for moving the cars depending on the number
 	moveBlue(i) {
 		this.physics.moveTo(this.blue, this.tiles[i][0], this.tiles[i][1], 90);
-      
-        var distance = Phaser.Math.Distance.Between(this.blue.x, this.blue.y, this.tiles[i][0], this.tiles[i][1]);
 
-        //halts the motion when car is close enough to destination
-        if (this.blue.body.speed > 0) {
-            if (distance < 3) {
-                this.blue.body.reset(this.tiles[i][0], this.tiles[i][1]);
-            }
-        }
-    }
+		var distance = Phaser.Math.Distance.Between(this.blue.x, this.blue.y, this.tiles[i][0], this.tiles[i][1]);
 
-    moveRed(i) {
+		//halts the motion when car is close enough to destination
+		if (this.blue.body.speed > 0) {
+		    if (distance < 3) {
+			this.blue.body.reset(this.tiles[i][0], this.tiles[i][1]);
+		    }
+		}
+	    }
+
+    	moveRed(i) {
 		this.physics.moveTo(this.red, this.tiles[i][0], this.tiles[i][1], 90);
       
-        var distance = Phaser.Math.Distance.Between(this.red.x, this.red.y, this.tiles[i][0], this.tiles[i][1]);
+		var distance = Phaser.Math.Distance.Between(this.red.x, this.red.y, this.tiles[i][0], this.tiles[i][1]);
 
-        //halts the motion when car is close enough to destination
-        if (this.red.body.speed > 0) {
-            if (distance < 3) {
-                this.red.body.reset(this.tiles[i][0], this.tiles[i][1]);
-            }
-        }
-    }
+		//halts the motion when car is close enough to destination
+		if (this.red.body.speed > 0) {
+		    if (distance < 3) {
+			this.red.body.reset(this.tiles[i][0], this.tiles[i][1]);
+		    }
+		}
+	    }
 
-    movePurple(i) {
+    	movePurple(i) {
 		this.physics.moveTo(this.purple, this.tiles[i][0], this.tiles[i][1], 90);
       
-        var distance = Phaser.Math.Distance.Between(this.purple.x, this.purple.y, this.tiles[i][0], this.tiles[i][1]);
+		var distance = Phaser.Math.Distance.Between(this.purple.x, this.purple.y, this.tiles[i][0], this.tiles[i][1]);
 
-        //halts the motion when car is close enough to destination
-        if (this.purple.body.speed > 0) {
-            if (distance < 3) {
-                this.purple.body.reset(this.tiles[i][0], this.tiles[i][1]);
-            }
-        }
-    }
+		//halts the motion when car is close enough to destination
+		if (this.purple.body.speed > 0) {
+		    if (distance < 3) {
+			this.purple.body.reset(this.tiles[i][0], this.tiles[i][1]);
+		    }
+		}
+	    }
 
-    moveGreen(i) {
+    	moveGreen(i) {
 		this.physics.moveTo(this.green, this.tiles[i][0], this.tiles[i][1], 90);
       
-        var distance = Phaser.Math.Distance.Between(this.green.x, this.green.y, this.tiles[i][0], this.tiles[i][1]);
+		var distance = Phaser.Math.Distance.Between(this.green.x, this.green.y, this.tiles[i][0], this.tiles[i][1]);
 
-        //halts the motion when car is close enough to destination
-        if (this.green.body.speed > 0) {
-            if (distance < 3) {
-                this.green.body.reset(this.tiles[i][0], this.tiles[i][1]);
-            }
-        }
-    }
+		//halts the motion when car is close enough to destination
+		if (this.green.body.speed > 0) {
+		    if (distance < 3) {
+			this.green.body.reset(this.tiles[i][0], this.tiles[i][1]);
+		    }
+		}
+	    }
 
+	    
     update() {
-        
         if(addCars.style.display == 'none'){
 
 	        if(p2.style.display == 'flex') {
@@ -708,8 +682,6 @@ class StartScene extends
     	}
     }
 }
-
-
 
 
 //----------------------------------------------------------------------
