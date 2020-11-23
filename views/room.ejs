@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Waiting Room</title>
+  <script>
+    const roomName = "<%= roomName %>"
+  </script>
+  <script defer src="http://localhost:5000/socket.io/socket.io.js"></script>
+  <script defer src="client.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.min.js"></script>
+  <link rel="stylesheet" href="room.css">
+</head>
+
+<body>
+  <div id="lobby">
+    <h1 id="waitingroom">Waiting Room</h1>
+    <div id="message-container"></div>
+    <form id="all-ready">
+      <button type="button" id="ready" enabled>Click once ALL players are in lobby</button>
+    </form>
+    <h2 id="instructions">Select a car color</h2>
+    <form id="pick-car">
+      <button class="color-button" type="button" id="red" disabled>red</button>
+      <button class="color-button" type="button" id="green" disabled>green</button>
+      <button class="color-button" type="button" id="purple" disabled>purple</button>
+      <button class="color-button" type="button" id="blue" disabled>blue</button>
+    </form>
+    <form id="send-container">
+      <input type="text" id="message-input">
+      <button type="submit" id="send-button">Send</button>
+    </form>
+    <form id="start">
+        <button type="button" id="start-game">START</button>
+    </form>
+  </div>
+
+ <div id="gamestuff">
+  <div id="tile">
+  </div>
+  <div id="spinny-wheel">
+    <img id="wheel" src="./images/colorwheel3.png">
+    <h1 id="spin-num"></h1>
+    <button type="button" id="roll">ROLL</button>
+  </div>
+  <div id="profile-box"></div>
+  <div class="user-labels" id="first-player"></div>
+  <div class="money-labels" id="first-money"></div>
+  <div class="user-labels" id="second-player"></div>
+  <div class="money-labels" id="second-money"></div>
+  <div class="user-labels" id="third-player"></div>
+  <div class="money-labels" id="third-money"></div>
+  <div class="user-labels" id="fourth-player"></div>
+  <div class="money-labels" id="fourth-money"></div>
+  <button type="button" class="player-colors" id="r"></button>
+  <button type="button" class="player-colors" id="b"></button>
+  <button type="button" class="player-colors" id="g"></button>
+  <button type="button" class="player-colors" id="p"></button>
+  <div id="card">
+    <button type="button" id="close">x</button>
+  </div>
+  <button type="button" id="add-cars">Click to add cars to the board!</button>
+</div>
+</body>
+</html>
